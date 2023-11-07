@@ -8,11 +8,11 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-from deep_face  import analyze_image, emotion_translator
+from deep_face  import analyze_image, emotion_translator, emotion_to_emoji
 
 def detector():
     st.markdown("### Seleccione una Imagen")
-    image_source = st.radio("Elige la fuente de la imagen", ["Desde el ordenador", "Pegue una URL", "Saque una foto (solo para movil)"])
+    image_source = st.radio("Elige la fuente de la imagen", ["Desde el ordenador", "Pegue una URL", "Saque una foto"])
 
     if image_source == "Desde el ordenador":
         st.write("Seleccione una imagen desde su ordenador:")
@@ -33,34 +33,35 @@ def detector():
                     f.write(uploaded_file.read())
 
                 col1, col2 = st.columns(2)
+                
                 with col1:
                     emotion, age, gender, race, analysis = analyze_image(temp_file_path)
-                    # Clean up the temporary directory
-                    temp_dir.cleanup()
+                    
+                with col2:  
                     spanish_emotion = emotion_translator(emotion)
-                    st.markdown(f"## Emocion Detectada: {spanish_emotion}")
+                    emoji =  emotion_to_emoji(emotion)
+                    st.markdown(f"## Emocion Detectada: \n # {emoji} {spanish_emotion}")
                     # st.write(f"Predicted Age: {age}")
                     # st.write(f"Predicted Gender: {gender}")
-                with col2:        
-                    # Add the PLOT
-                    data = analysis[0]['emotion']
-                    spanish_emotion_names = [emotion_translator(emotion) for emotion in data.keys()]
-                    percentages = list(data.values())
-                    st.write(" ")  
-                    st.write(" ")  
-                    st.write(" ")  
-                    st.write(" ") 
-                    st.write(" ")  
-                    st.write(" ") 
-                    st.markdown(f'#### Distribucion de Emociones')
+                      
+                # Clean up the temporary directory
+                temp_dir.cleanup()      
+                # Add the PLOT
+                data = analysis[0]['emotion']
+                spanish_emotion_names = [emotion_translator(emotion) for emotion in data.keys()]
+                percentages = list(data.values())
+                st.write(" ")  
+                st.markdown(f'#### Distribucion de Emociones')
 
-                    # Create a bar plot using seaborn
-                    plt.figure(figsize=(12, 10))
-                    sns.barplot(x=percentages, y=spanish_emotion_names, palette='dark')
-                    plt.xlabel('Porcentaje')
-                    plt.ylabel('Emocion')
-                    plt.title('Distribucion de Emociones')
-                    st.pyplot(plt)
+                # Create a bar plot using seaborn
+                plt.figure(figsize=(12, 10))
+                ax = sns.barplot(x=percentages, y=spanish_emotion_names, palette='dark')
+                plt.xlabel('Porcentaje', fontsize=22)
+                plt.ylabel('Emocion', fontsize=22)
+                # Customize x and y tick label sizes
+                ax.tick_params(axis='x', labelsize=19)
+                ax.tick_params(axis='y', labelsize=19)
+                st.pyplot(plt)
 
     elif image_source == "Pegue una URL":  # User chose "Paste URL"
         url = st.text_input("Pegue la URL de la imagen")
@@ -82,30 +83,35 @@ def detector():
                         image.save(temp_file_path)
                         
                         col1, col2 = st.columns(2)
+                
                         with col1:
                             emotion, age, gender, race, analysis = analyze_image(temp_file_path)
-                            # Clean up the temporary directory
-                            temp_dir.cleanup()
+                            
+                        with col2:  
                             spanish_emotion = emotion_translator(emotion)
-                            st.markdown(f"## Emocion Detectada: {spanish_emotion}")
+                            emoji =  emotion_to_emoji(emotion)
+                            st.markdown(f"## Emocion Detectada: \n # {emoji} {spanish_emotion}")
                             # st.write(f"Predicted Age: {age}")
                             # st.write(f"Predicted Gender: {gender}")
-                        with col2:        
-                            # Add the PLOT
-                            data = analysis[0]['emotion']
-                            spanish_emotion_names = [emotion_translator(emotion) for emotion in data.keys()]
-                            percentages = list(data.values())
-                            st.write(" ")  
-                            st.write(" ") 
-                            st.markdown(f'#### Distribucion de Emociones')
+                            
+                        # Clean up the temporary directory
+                        temp_dir.cleanup()      
+                        # Add the PLOT
+                        data = analysis[0]['emotion']
+                        spanish_emotion_names = [emotion_translator(emotion) for emotion in data.keys()]
+                        percentages = list(data.values())
+                        st.write(" ")  
+                        st.markdown(f'#### Distribucion de Emociones')
 
-                            # Create a bar plot using seaborn
-                            plt.figure(figsize=(12, 10))
-                            sns.barplot(x=percentages, y=spanish_emotion_names, palette='dark')
-                            plt.xlabel('Porcentaje')
-                            plt.ylabel('Emocion')
-                            plt.title('Distribucion de Emociones')
-                            st.pyplot(plt)
+                        # Create a bar plot using seaborn
+                        plt.figure(figsize=(12, 10))
+                        ax = sns.barplot(x=percentages, y=spanish_emotion_names, palette='dark')
+                        plt.xlabel('Porcentaje', fontsize=22)
+                        plt.ylabel('Emocion', fontsize=22)
+                        # Customize x and y tick label sizes
+                        ax.tick_params(axis='x', labelsize=19)
+                        ax.tick_params(axis='y', labelsize=19)
+                        st.pyplot(plt)
                         
                 else:
                     st.write("No es posible cargar esta image desde la URL.")
@@ -127,36 +133,29 @@ def detector():
                     image_pil.save(temp_file_path)
                     
                     col1, col2 = st.columns(2)
+                
                     with col1:
                         emotion, age, gender, race, analysis = analyze_image(temp_file_path)
-                        spanish_emotion = emotion_translator(emotion)
-                        st.markdown(f"## Emocion Detectada: {spanish_emotion}")
-                        # st.write(f"Predicted Age: {age}")
-                        # st.write(f"Predicted Gender: {gender}")
                         
-                    with col2:        
-                        # Add the PLOT
-                        data = analysis[0]['emotion']
-                        spanish_emotion_names = [emotion_translator(emotion) for emotion in data.keys()]
-                        percentages = list(data.values())
-                        st.write(" ")  
-                        st.write(" ")  
-                        st.write(" ")  
-                        st.write(" ") 
-                        st.write(" ")  
-                        st.write(" ") 
-                        st.markdown(f'#### Distribucion de Emociones')
+                    with col2:  
+                        spanish_emotion = emotion_translator(emotion)
+                        emoji =  emotion_to_emoji(emotion)
+                        st.markdown(f"## Emocion Detectada: \n # {emoji} {spanish_emotion}")
+                        # st.write(f"Predicted Age: {age}")
+                        # st.write(f"Predicted Gender: {gender}")  
+                    # Add the PLOT
+                    data = analysis[0]['emotion']
+                    spanish_emotion_names = [emotion_translator(emotion) for emotion in data.keys()]
+                    percentages = list(data.values())
+                    st.write(" ")  
+                    st.markdown(f'#### Distribucion de Emociones')
 
-                        # Create a bar plot using seaborn
-                        plt.figure(figsize=(12, 10))
-                        sns.barplot(x=percentages, y=spanish_emotion_names, palette='dark')
-                        plt.xlabel('Porcentaje')
-                        plt.ylabel('Emocion')
-                        plt.title('Distribucion de Emociones')
-                        st.pyplot(plt)
-
-                        # plt.bar(list(emotion_translator(emotion) for emotion in data.keys()), list(data.values()))
-                        # plt.xlabel('Emocion')
-                        # plt.ylabel('Porcentaje')
-                        # plt.title('Distribucion de Emociones')
-                        # st.pyplot(plt)
+                    # Create a bar plot using seaborn
+                    plt.figure(figsize=(12, 10))
+                    ax = sns.barplot(x=percentages, y=spanish_emotion_names, palette='dark')
+                    plt.xlabel('Porcentaje', fontsize=22)
+                    plt.ylabel('Emocion', fontsize=22)
+                    # Customize x and y tick label sizes
+                    ax.tick_params(axis='x', labelsize=19)
+                    ax.tick_params(axis='y', labelsize=19)
+                    st.pyplot(plt)

@@ -56,3 +56,17 @@ def emotion_translator(emotion):
     
     return translation
     
+def emotion_to_emoji(emotion):
+    # Define the emotion to emoji translation dictionary
+    emotion_emoji = {
+        "happy": "😄",
+        "sad": "😢",
+        "angry": "😡",
+        "surprise": "😲",
+        "fear": "😨",
+        "disgust": "🤢",
+        "neutral": "😐"
+    }
+    emoji = emotion_emoji.get(emotion, "Unknown Emoji")  # Default to "Unknown Emoji" if not found
+
+    return emoji
