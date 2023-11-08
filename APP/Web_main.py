@@ -14,12 +14,27 @@ from deep_face  import analyze_image
 page = st.sidebar.radio("Select a page", ["Inteligencia Emocional Artifiacial" , "Detector de Emociones"])
 
 def main():
-    # Give your web app a title
-    st.title("Inteligencia [EMOCIONAL] Artificial")
-
-    # Add some content
-    st.write("Bienvenido a la aplicacion de Reconocimiento facial emocional!")
     
+    # Center the title using CSS
+    st.markdown(
+        f"""
+        <h1 style='text-align: center;'>
+            Inteligencia [EMOCIONAL] Artificial
+        </h1>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Center a subtitle with a specific CSS class
+    st.markdown(
+        f"""
+        <h4 style='text-align: center;'>
+            Bienvenido a la aplicacion de Reconocimiento facial emocional!
+        </h4>
+        """,
+        unsafe_allow_html=True
+    )
+
     #GIF
     # Specify the desired width for the image (e.g., 300 pixels)
     desired_width = 400
@@ -31,17 +46,15 @@ def main():
     </div>
     """
     st.markdown(centered_html, unsafe_allow_html=True)
-    st.write(" ")
+    
+    st.write("---------------")
     
     # Create a layout with two columns
-    left_column, right_column = st.columns([2, 3])
-    # Add text to the left column
-    with left_column:
-        st.write("")
-    # Add the button to the right column
+    left_column, right_column = st.columns(2)
+    # Right column
     with right_column:
         st.write("")
-        #start_button = st.button("EMPEZAR")
+       
         
     
 

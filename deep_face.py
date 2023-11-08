@@ -44,12 +44,12 @@ def analyze_image(img_path):
 def emotion_translator(emotion):
     # Define the English to Spanish emotion translation dictionary
     emotion_translation = {
-        "happy": "Feliz",
-        "sad": "Triste",
-        "angry": "Enojado",
-        "surprise": "Sorprendido",
-        "fear": "Asustado",
-        "disgust": "Asqueado",
+        "happy": "Alegría",
+        "sad": "Tristeza",
+        "angry": "Enfado",
+        "surprise": "Sorpresa",
+        "fear": "Susto",
+        "disgust": "Disgusto",
         "neutral": "Neutro"
     }
     translation = emotion_translation.get(emotion, emotion)
