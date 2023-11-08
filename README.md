@@ -1,4 +1,4 @@
-# Facial Expression Recognition Project!!
+# Facial Expression Recognition Project!
 
 Welcome to our Facial Expression Recognition Project! This project aims to introduce you to the fascinating world of computer vision and emotion recognition using deep learning. Whether you're new to data science or a tech enthusiast, we're excited to have you on board.
 
