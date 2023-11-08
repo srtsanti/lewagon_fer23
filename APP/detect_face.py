@@ -8,7 +8,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-from deep_face  import analyze_image, emotion_translator, emotion_to_emoji
+from app.deep_face  import analyze_image, emotion_translator, emotion_to_emoji
 
 def detector():
     

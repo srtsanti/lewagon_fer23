@@ -1,5 +1,5 @@
 import streamlit as st
-from Page1 import detector
+from app.detect_face import detector
 
 import os
 import tempfile
@@ -8,7 +8,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-from deep_face  import analyze_image
+from app.deep_face  import analyze_image
 
 # Create a sidebar with page selection
 page = st.sidebar.radio("Select a page", ["Inteligencia Emocional Artifiacial" , "Detector de Emociones"])
