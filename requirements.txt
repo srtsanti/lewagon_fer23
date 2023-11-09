@@ -4,5 +4,5 @@ numpy
 Pillow
 seaborn
 deepface
-opencv-python
+opencv-python==4.8.1.78
 libgl1-mesa-glx
