@@ -4,6 +4,7 @@ from deepface import DeepFace
 import streamlit as st
 
 @st.experimental_memo
+@st.experimental_singleton
 def analyze_image(img_path):
     
     analysis = DeepFace.analyze(
