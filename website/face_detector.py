@@ -79,6 +79,10 @@ def detector():
                     ax.tick_params(axis='x', labelsize=19)
                     ax.tick_params(axis='y', labelsize=19)
                     st.pyplot(plt)
+                    
+                    if st.button("Clear Memory"):
+                        # Clear values from all memoized functions:
+                        st.experimental_memo.clear()
 
     elif image_source == "Pegue una URL":  # User chose "Paste URL"
         url = st.text_input("Pegue la URL de la imagen")
