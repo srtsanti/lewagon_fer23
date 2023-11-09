@@ -3,9 +3,8 @@ pandas
 numpy
 Pillow
 seaborn
-deepface
-mtcnn
-retina-face
+
 opencv-python==4.8.1.78
+
 face_detector
 face_analyse
