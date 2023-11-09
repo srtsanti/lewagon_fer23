@@ -1,5 +1,6 @@
 import streamlit as st
-from app.detect_face import detector
+from face_detector import detector
+from deep_face import analyze_image, emotion_to_emoji, emotion_translator
 
 import os
 import tempfile
@@ -7,8 +8,6 @@ import matplotlib.pyplot as plt
 import requests
 from PIL import Image
 from io import BytesIO
-
-from app.deep_face  import analyze_image
 
 # Create a sidebar with page selection
 page = st.sidebar.radio("Select a page", ["Inteligencia Emocional Artifiacial" , "Detector de Emociones"])
