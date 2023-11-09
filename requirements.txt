@@ -4,7 +4,8 @@ numpy
 Pillow
 seaborn
 deepface
+mtcnn
+retina-face
 opencv-python==4.8.1.78
-libgl1-mesa-glx
 face_detector
 face_analyse
