@@ -1,5 +1,5 @@
 import streamlit as st
-from face_detector import detector
+from lewagon_fer23.website.face_detector import detector
 from lewagon_fer23.website.face_analyse import analyze_image, emotion_to_emoji, emotion_translator
 
 import os
@@ -54,12 +54,10 @@ def main():
     with right_column:
         st.write("")
        
-        
-    
+
 
 # Display the selected page
 if page == "Inteligencia Emocional Artifiacial":
     main()
 elif page == 'Detector de Emociones':
     detector()
-
