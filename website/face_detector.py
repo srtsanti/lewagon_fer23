@@ -1,5 +1,5 @@
 import streamlit as st
-from deep_face import analyze_image, emotion_translator, emotion_to_emoji
+from lewagon_fer23.website.face_analyse import analyze_image, emotion_translator, emotion_to_emoji
 
 import os
 import tempfile

@@ -1,6 +1,6 @@
 import streamlit as st
 from face_detector import detector
-from deep_face import analyze_image, emotion_to_emoji, emotion_translator
+from lewagon_fer23.website.face_analyse import analyze_image, emotion_to_emoji, emotion_translator
 
 import os
 import tempfile
