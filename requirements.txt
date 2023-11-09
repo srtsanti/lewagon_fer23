@@ -5,3 +5,4 @@ Pillow
 seaborn
 deepface
 opencv-python
+libgl1-mesa-glx
