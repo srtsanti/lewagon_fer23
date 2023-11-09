@@ -21,11 +21,11 @@ def detector():
         unsafe_allow_html=True
     )
     
-    c1, c2, c3 = st.columns(3)
-    portada = "Detector_image_portada.jpeg"
+    # c1, c2, c3 = st.columns(3)
+    # portada = "lewagon_fer23/website/Detector_image_portada.jpeg"
     
-    with c2:    
-        st.image(portada, width=250)
+    # with c2:    
+    #     st.image(portada, width=250)
     
     st.markdown("### Seleccione una Imagen")
     image_source = st.radio("Elige la fuente de la imagen", ["Desde el ordenador", "Pegue una URL", "Saque una foto"])
