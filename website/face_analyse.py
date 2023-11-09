@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from deepface import DeepFace
 import streamlit as st
 
-@st.experimental_memo
-@st.experimental_singleton
+@st.cache_data
+@st.cache_resource
 def analyze_image(img_path):
     
     analysis = DeepFace.analyze(

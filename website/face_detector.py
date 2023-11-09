@@ -82,7 +82,7 @@ def detector():
                     
                     if st.button("Clear Memory"):
                         # Clear values from all memoized functions:
-                        st.experimental_memo.clear()
+                        st.cache_resource.clear()
 
     elif image_source == "Pegue una URL":  # User chose "Paste URL"
         url = st.text_input("Pegue la URL de la imagen")
