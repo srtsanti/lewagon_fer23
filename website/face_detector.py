@@ -22,7 +22,7 @@ def detector():
     )
     
     c1, c2, c3 = st.columns(3)
-    portada = "data/Detector_image_portada.jpeg"
+    portada = "Detector_image_portada.jpeg"
     
     with c2:    
         st.image(portada, width=250)
